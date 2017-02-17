@@ -1,0 +1,41 @@
+*args variable arguments when defining a function
+**kwargs variable unpacking when calling a function
+
+# decorators
+@some_decorator
+def some_function(arg):
+    #blah
+
+some_function = some_decorator(some_function)
+
+
+function decorator - not a true decorator it is a function that returns a decorator
+
+def add(increment):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            return increment + funct(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
+# dunder - short handhand for saying double under score
+
+class Prefixer():
+    def __init__(self, prefix):
+        self.prefix = prefix
+    def __call__(self, message):
+        return self.prefix + message
+
+simonsays = Prefixer("Simon Says: ")
+simonsays("Hello world")
+
+"Simon Says: Hello World"
+
+
+Magic Methods
+class Angle:
+    __add__(self, other_angle):
+    return Angle(self.value + other_angle.value)
+
+    # others: __sub__, __mul__, __truediv__, __mod__, __pow__
