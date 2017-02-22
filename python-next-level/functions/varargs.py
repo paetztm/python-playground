@@ -72,7 +72,7 @@ Going to x=8, y=33, z=-4
 
 def set_destination(x, y, z):
     "Going to x=3, y=8, z=2"
-    print "Going to x={}, y={}, z={}".format(x, y, z)
+    print("Going to x={}, y={}, z={}".format(x, y, z))
 
 
 def product(*args, **kwargs):
@@ -81,7 +81,7 @@ def product(*args, **kwargs):
         prod = prod * arg
     for key, value in kwargs.items():
         prod = prod * value
-    print prod
+    print(prod)
 
 
 def total(*args, **kwargs):
@@ -90,7 +90,7 @@ def total(*args, **kwargs):
         tots = tots + arg
     for key, value in kwargs.items():
         tots = tots + value
-    print tots
+    print(tots)
 
 
 def max_even(*args):
@@ -98,7 +98,7 @@ def max_even(*args):
     for arg in args:
         if arg % 2 == 0 and arg > maxi:
             maxi = arg
-    print maxi
+    print(maxi)
 
 
 def val_for_longest_key(**kwargs):
@@ -109,7 +109,7 @@ def val_for_longest_key(**kwargs):
         elif len(value) > len(maxi):
             maxi = key
 
-    print kwargs.get(maxi)
+    print(kwargs.get(maxi))
 
 
 # Do not edit any code below this line!

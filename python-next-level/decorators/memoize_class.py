@@ -51,7 +51,7 @@ Let's ensure @Memoize is a class-based decorator, not function-based.
 
 # Write your code here:
 
-class Memoize(object):
+class Memoize:
     cache = {}
     def __init__(self, func):
         self.func = func

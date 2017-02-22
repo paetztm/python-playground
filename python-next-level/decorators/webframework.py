@@ -21,7 +21,7 @@ Create the scaffolding for a Flask-like framework.
 '''
 
 # Write your code here:
-class WebApp(object):
+class WebApp:
     def __init__(self):
         self.cache = dict()
 

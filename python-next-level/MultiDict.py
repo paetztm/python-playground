@@ -20,8 +20,8 @@ class MultiDict:
 
 m = MultiDict()
 m.insert("x", 3)
-print m["x"]
+print(m["x"])
 
 m["y"] = 5
 
-print m["y"]
+print(m["y"])

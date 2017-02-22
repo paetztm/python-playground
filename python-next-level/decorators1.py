@@ -1,7 +1,7 @@
 
 def printlog(func):
     def wrapper(*args, **kwargs):
-        print 'CALLING: {}'.format(func.__name__)
+        print('CALLING: {}'.format(func.__name__))
         return func(*args, **kwargs)
     return wrapper
 
@@ -13,20 +13,20 @@ items = ["apples", "oranges", "bananas"]
 @printlog
 def find_max():
     return max(items, key=lambda x: len(x))
-print f(3)
+print(f(3))
 
 def check_id(func):
     def wrapper(arg):
-        print "ID of func: {}".format(id(func))
+        print("ID of func: {}".format(id(func)))
         return func(arg)
-    print "ID of wrapper: {}".format(id(wrapper))
+    print("ID of wrapper: {}".format(id(wrapper)))
     return wrapper
 
 @check_id
 def g(x):
     return x * 3
 
-print g(3)
+print(g(3))
 
-print id(g)
+print(id(g))
 

@@ -13,4 +13,4 @@ class UniqueList:
         return self.items[index]
 
 u = UniqueList([3, 7, 2, 9, 3, 4, 2])
-print u[2: 4]
+print(u[2: 4])

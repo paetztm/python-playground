@@ -34,7 +34,7 @@ Pro tips:
 
 
 def print_hello(helloVar):
-    print "Hello, " + helloVar + "!"
+    print("Hello, " + helloVar + "!")
 
 
 def hello(world):
