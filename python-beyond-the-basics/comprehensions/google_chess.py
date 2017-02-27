@@ -1,6 +1,10 @@
 import math
 
-GRID_SIZE = 8
+GRID_SIZE = 100
+class Grid:
+    def __init__(self, rows, columns):
+        pass
+
 class Point:
     def __init__(self, row, column):
         self.row = row
@@ -37,6 +41,10 @@ def get_column(point):
     return point % GRID_SIZE
 
 
+def is_corner(point):
+    return (point.column == 0 and point.row == 0) or (point.column == 0 and point.row == GRID_SIZE - 1) or (point.column == GRID_SIZE - 1 and point.row == 0) or (point.column == GRID_SIZE - 1 and point.row == GRID_SIZE - 1)
+
+
 def memoize(func):
     cache = {}
 
@@ -44,10 +52,16 @@ def memoize(func):
         source = Point(get_row(src), get_column(src))
         destination = Point(get_row(dest), get_column(dest))
         distance = math.sqrt((destination.column - source.column)**2 + (destination.row - source.row)**2)
-
-        if not distance in cache:
-            cache[distance] = func(source, destination)
-        return cache[distance]
+        # corners with diagonal of 1 aren't equal to every where else
+        if distance == 1.4142135623730951 and (is_corner(source) or is_corner(destination)):
+            count = func(source, destination)
+        elif distance not in cache:
+            count = func(source, destination)
+            cache[distance] = count
+        else:
+            count = cache[distance]
+        # print("{} src {} dest {} distance {} cached".format(src, dest, distance, count))
+        return count
 
     return wrapper
 
@@ -101,13 +115,16 @@ right_answers = []
 for x in range(GRID_SIZE**2):
     for y in range(GRID_SIZE**2):
         answer1 = answer(x, y)
-        answer3 = answer2(x, y)
-        if not answer1 == answer3:
-            print("{} answer1 {} answer2 {} x {} y".format(answer1, answer3, x, y))
-            a = "a" + a
-
-        # left_answers.append(answer(x, y))
-        # right_answers.append(answer2(x, y))
+        # point = Point(get_row(x), get_column(x))
+        # if is_corner(point):
+        #     print("{} x {} y {} row {} col".format(x, y, point.row, point.column))
+        # answer3 = answer2(x, y)
+        # if not answer1 == answer3:
+        #    print("{} answer1 {} answer2".format(answer1, answer3))
+        #    a = "a" + a
+        #
+        # left_answers.append(answer1)
+        # right_answers.append(answer3)
 print(time.time() - start_time)
 print(left_answers == right_answers)
 #print(answer(19, 36)) # = 1
